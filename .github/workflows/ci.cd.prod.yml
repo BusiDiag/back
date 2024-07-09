@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        java-version: [11]
+        java-version: [11] # Specify the Java version you need
     steps:
       - name: Checkout branch
         uses: actions/checkout@v3
@@ -20,7 +20,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: ${{ matrix.java-version }}
-          distribution: "adopt" # Distro
+          distribution: "adopt" # You can choose the distribution, e.g., adopt, zulu, etc.
 
       - name: Cache Gradle packages
         uses: actions/cache@v3

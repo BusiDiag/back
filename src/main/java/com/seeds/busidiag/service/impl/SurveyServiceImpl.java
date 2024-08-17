@@ -2,15 +2,15 @@ package com.seeds.busidiag.service.impl;
 
 import com.seeds.busidiag.dto.UpdateSurveyResultDto;
 import com.seeds.busidiag.entity.SurveyResult;
-import com.seeds.busidiag.service.ResultService;
+import com.seeds.busidiag.service.SurveyService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
 @Service
-public class ResultServiceImpl implements ResultService {
+public class SurveyServiceImpl implements SurveyService {
 
-    public ResultServiceImpl() {
+    public SurveyServiceImpl() {
     }
 
     @Override

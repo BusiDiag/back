@@ -19,7 +19,8 @@ public class Businesses {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-
+    @ManyToOne
+    @JoinColumn(name = "owner_id", nullable = false)  // Foreign key to Users table
     private Users owner;
 
     @Enumerated(EnumType.STRING)

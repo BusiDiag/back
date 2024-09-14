@@ -3,6 +3,8 @@ package com.seeds.busidiag.entity;
 import com.seeds.busidiag.enums.BusinessStatus;
 import com.seeds.busidiag.enums.BusinessType;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -19,10 +21,12 @@ public class Businesses {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "owner_id", nullable = false)  // Foreign key to Users table
     private Users owner;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "type", nullable = false)
     private BusinessType type;
@@ -30,10 +34,12 @@ public class Businesses {
     @Column(name = "size")
     private String size;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
     private BusinessStatus status;
 
+    @PastOrPresent
     @Column(name = "date")
     private LocalDate date;
 }

@@ -23,7 +23,7 @@ class UsersEntityTest {
         Users users = Users.builder()
                 .email("example@example.com")
                 .username("test")
-                .password("passwordMoreThan6Char")
+                .password("test")
                 .role(UserRole.USER)
                 .build();
         assertTrue(validator.validate(users).isEmpty());

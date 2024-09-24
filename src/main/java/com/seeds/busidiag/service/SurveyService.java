@@ -5,7 +5,7 @@ import com.seeds.busidiag.entity.SurveyResult;
 
 import java.util.ArrayList;
 
-public interface ResultService {
+public interface SurveyService {
 
     int save(SurveyResult surveyResult);
 

@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        java-version: [11] # Specify the Java version you need
+        java-version: [17] # Specify the Java version you need
     steps:
       - name: Checkout branch
         uses: actions/checkout@v3

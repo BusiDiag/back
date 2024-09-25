@@ -1,0 +1,20 @@
+spring.application.name=busidiag
+
+# Set the datasource information to match needs
+spring.datasource.url=
+spring.datasource.username=
+spring.datasource.password=
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+
+spring.datasource.hikari.connection-timeout=20000
+spring.datasource.hikari.minimum-idle=10
+spring.datasource.hikari.maximum-pool-size=10
+spring.datasource.hikari.idle-timeout=30000
+spring.datasource.hikari.max-lifetime=1200000
+
+logging.level.org.hibernate.SQL=DEBUG
+logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE

@@ -12,8 +12,7 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BusinessesEntityTest {
-
+public class DiagnosisEntityTest {
     private static Validator validator;
 
     static {
@@ -22,7 +21,7 @@ class BusinessesEntityTest {
     }
 
     @Test
-    public void testValidBusiness() {
+    public void testValidDiagnosis() {
         Users owner = Users.builder()
                 .email("owner@example.com")
                 .username("owner")
@@ -37,18 +36,28 @@ class BusinessesEntityTest {
                 .status(BusinessStatus.ACTIVE)
                 .date(LocalDate.now())
                 .build();
-        assertTrue(validator.validate(business).isEmpty());
+
+        Diagnosis diagnosis = Diagnosis.builder()
+                .business(business)
+                .date(LocalDate.now())
+                .scoreCat1(4.5f)
+                .scoreCat2(3.8f)
+                .scoreCat3(4.0f)
+                .scoreCat4(5.0f)
+                .recommendations("This is a recommendation.")
+                .build();
+        assertTrue(validator.validate(diagnosis).isEmpty());
     }
 
     @Test
-    public void testInvalidBusiness() {
-        Businesses business = Businesses.builder()
-                .owner(null)
-                .type(null)
-                .size("large")
-                .status(null)
+    public void testInvalidDiagnosis() {
+        Diagnosis diagnosis = Diagnosis.builder()
+                .business(null)
                 .date(null)
+                .scoreCat1(-1f)
+                .scoreCat2(6f)
+                .recommendations("")
                 .build();
-        assertFalse(validator.validate(business).isEmpty());
+        assertFalse(validator.validate(diagnosis).isEmpty());
     }
 }

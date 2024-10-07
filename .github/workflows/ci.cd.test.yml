@@ -13,8 +13,24 @@ jobs:
       matrix:
         java-version: [17]
     steps:
+      - name: MySQL configurations
+        uses: samin/mysql-action@v1
+        with: 
+          character set server: 'utf8'
+          collation server: 'uft8_general_ci'
+          mysql database: BusiDiag
+          mysql user: dev
+          mysql password: ${{ secrets.DatabasePassword }}
+
       - name: Checkout branch
         uses: actions/checkout@v3
+        
+      - name: Create application.properties
+        run:
+          cd ./src/main/resources
+          touch ./application.properties
+          echo "${{ secrets.APPLICATION_PROPERTIES }}" > ./application.properties
+        shell: bash
 
       - name: Set up JDK ${{ matrix.java-version }}
         uses: actions/setup-java@v3

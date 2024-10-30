@@ -30,8 +30,8 @@ class BusinessesEntityTest {
                 .role(UserRole.USER)
                 .build();
 
-        Businesses business = Businesses.builder()
-                .owner(owner)
+        Business business = Business.builder()
+                .ownerId(owner.getId())
                 .type(BusinessType.PUBLIC)
                 .size("large")
                 .status(BusinessStatus.ACTIVE)
@@ -42,8 +42,8 @@ class BusinessesEntityTest {
 
     @Test
     public void testInvalidBusiness() {
-        Businesses business = Businesses.builder()
-                .owner(null)
+        Business business = Business.builder()
+                .ownerId(0)
                 .type(null)
                 .size("large")
                 .status(null)

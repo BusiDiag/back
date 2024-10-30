@@ -31,8 +31,8 @@ public class ResponsesEntityTest {
                 .role(UserRole.USER)
                 .build();
 
-        Businesses business = Businesses.builder()
-                .owner(owner)
+        Business business = Business.builder()
+                .ownerId(owner.getId())
                 .type(BusinessType.PUBLIC)
                 .size("large")
                 .status(BusinessStatus.ACTIVE)

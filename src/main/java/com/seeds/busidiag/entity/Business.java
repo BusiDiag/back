@@ -9,22 +9,23 @@ import lombok.*;
 
 import java.time.LocalDate;
 
-@Getter
 @Builder
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "businesses")
-public class Businesses {
+public class Business {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @NotNull
-    @ManyToOne
     @JoinColumn(name = "owner_id", nullable = false)  // Foreign key to Users table
-    private Users owner;
+    // Changed from User to int to match db
+    private int ownerId;
 
     @NotNull
     @Enumerated(EnumType.STRING)

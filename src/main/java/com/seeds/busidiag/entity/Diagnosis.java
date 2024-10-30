@@ -3,16 +3,13 @@ package com.seeds.busidiag.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
-import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Builder
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -26,7 +23,7 @@ public class Diagnosis {
     @NotNull
     @ManyToOne
     @JoinColumn(name = "business_id", nullable = false) // Foreign key to Businesses table
-    private Businesses business;
+    private Business business;
 
     @PastOrPresent
     @Column(name = "date", nullable = false)

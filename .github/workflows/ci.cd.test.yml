@@ -31,4 +31,4 @@ jobs:
             ${{ runner.os }}-gradle-
 
       - name: Build and Test with Gradle
-        run: ./gradlew build -Dspring.profiles.active=test
+        run: ./gradlew build -Dspring.profiles.active=test -scan --stacktrace

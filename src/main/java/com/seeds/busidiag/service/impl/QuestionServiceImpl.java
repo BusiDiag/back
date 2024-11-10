@@ -1,35 +1,35 @@
 package com.seeds.busidiag.service.impl;
 
-import com.seeds.busidiag.entity.Questions;
-import com.seeds.busidiag.repository.QuestionsRepository;
-import com.seeds.busidiag.service.QuestionsService;
+import com.seeds.busidiag.entity.Question;
+import com.seeds.busidiag.repository.QuestionRepository;
+import com.seeds.busidiag.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class QuestionsServiceImpl implements QuestionsService {
+public class QuestionServiceImpl implements QuestionService {
 
-    private final QuestionsRepository questionsRepository;
+    private final QuestionRepository questionsRepository;
 
     @Autowired
-    public QuestionsServiceImpl(QuestionsRepository questionsRepository) {
+    public QuestionServiceImpl(QuestionRepository questionsRepository) {
         this.questionsRepository = questionsRepository;
     }
 
     @Override
-    public int save(Questions question) {
-        Questions savedQuestion = questionsRepository.save(question);
+    public int save(Question question) {
+        Question savedQuestion = questionsRepository.save(question);
         return savedQuestion.getId();
     }
 
     @Override
-    public Questions findById(int id) {
+    public Question findById(int id) {
         return questionsRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Question not found with id: " + id));
     }
 
     @Override
-    public int updateById(Questions question, int id) {
+    public int updateById(Question question, int id) {
         if (!questionsRepository.existsById(id)) {
             throw new RuntimeException("Question not found with id: " + id);
         }
@@ -48,7 +48,7 @@ public class QuestionsServiceImpl implements QuestionsService {
     }
 
     @Override
-    public Questions findByCategory(String category) {
+    public Question findByCategory(String category) {
         return questionsRepository.findByCategory(category)
                 .orElseThrow(() -> new RuntimeException("No question found for category: " + category));
     }

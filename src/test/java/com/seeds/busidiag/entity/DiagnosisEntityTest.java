@@ -22,7 +22,7 @@ public class DiagnosisEntityTest {
 
     @Test
     public void testValidDiagnosis() {
-        Users owner = Users.builder()
+        User owner = User.builder()
                 .email("owner@example.com")
                 .username("owner")
                 .password("password")

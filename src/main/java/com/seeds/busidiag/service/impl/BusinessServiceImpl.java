@@ -8,6 +8,10 @@ import com.seeds.busidiag.service.BusinessService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
 @Service
 public class BusinessServiceImpl implements BusinessService {
 
@@ -50,9 +54,8 @@ public class BusinessServiceImpl implements BusinessService {
     }
 
     @Override
-    public Business findByOwner(int ownerId) {
-        return businessRepository.findByOwnerId(ownerId)
-                .orElseThrow(() -> new RuntimeException("No business found for owner: " + ownerId));
+    public List<Business> findByOwner(int ownerId) {
+        return businessRepository.findByOwnerId(ownerId).map(List::of).orElse(Collections.emptyList());
     }
 
     @Override
@@ -73,5 +76,10 @@ public class BusinessServiceImpl implements BusinessService {
     @Override
     public int countByOwnerAndStatusAndType(int ownerId, BusinessStatus status, BusinessType type) {
         return businessRepository.countByOwnerIdAndStatusAndType(ownerId, status, type);
+    }
+
+    @Override
+    public List<Business> findAll() {
+        return businessRepository.findAll();
     }
 }

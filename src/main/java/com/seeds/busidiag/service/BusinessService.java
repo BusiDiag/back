@@ -4,6 +4,8 @@ import com.seeds.busidiag.entity.Business;
 import com.seeds.busidiag.enums.BusinessStatus;
 import com.seeds.busidiag.enums.BusinessType;
 
+import java.util.List;
+
 public interface BusinessService {
 
     int save(Business business);
@@ -24,7 +26,9 @@ public interface BusinessService {
     int deleteById(int id);
 
 
+    List<Business> findAll();
+
     Business findById(int id);
 
-    Business findByOwner(int ownerId);
+    List<Business> findByOwner(int ownerId);
 }

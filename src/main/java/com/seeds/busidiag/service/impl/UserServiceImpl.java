@@ -1,38 +1,38 @@
 package com.seeds.busidiag.service.impl;
 
-import com.seeds.busidiag.entity.Users;
+import com.seeds.busidiag.entity.User;
 import com.seeds.busidiag.enums.UserRole;
 import com.seeds.busidiag.repository.UserRepository;
-import com.seeds.busidiag.service.UsersService;
+import com.seeds.busidiag.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class UsersServiceImpl implements UsersService {
+public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
     @Autowired
-    public UsersServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
     @Override
-    public int save(Users user) {
-        Users savedUser = userRepository.save(user);
+    public int save(User user) {
+        User savedUser = userRepository.save(user);
         return savedUser.getId();
     }
 
     @Override
-    public Users findById(int id) {
+    public User findById(int id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found with id: " + id));
     }
 
     @Override
-    public int updateById(Users user, int id) {
+    public int updateById(User user, int id) {
         if (!userRepository.existsById(id)) {
             throw new RuntimeException("User not found with id: " + id);
         }
@@ -51,19 +51,19 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public Users findByEmail(String email) {
+    public User findByEmail(String email) {
         return userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("No user found with email: " + email));
     }
 
     @Override
-    public Users findByUsername(String username) {
+    public User findByUsername(String username) {
         return userRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("No user found with username: " + username));
     }
 
     @Override
-    public List<Users> findByRole(UserRole role) {
+    public List<User> findByRole(UserRole role) {
         return userRepository.findByRole(role);
     }
 }

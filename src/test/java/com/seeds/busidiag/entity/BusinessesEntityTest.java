@@ -23,7 +23,7 @@ class BusinessesEntityTest {
 
     @Test
     public void testValidBusiness() {
-        Users owner = Users.builder()
+        User owner = User.builder()
                 .email("owner@example.com")
                 .username("owner")
                 .password("password")

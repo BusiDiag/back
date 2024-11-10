@@ -13,12 +13,22 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "questions")
-public class Questions {
+@Table(name = "responses")
+public class Response {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "diagnosis_id", nullable = false)  // Foreign key to Diagnosis table
+    private Diagnosis diagnosis;
+
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "question_id", nullable = false)  // Foreign key to Questions table
+    private Question question;
 
     @NotNull
     @Enumerated(EnumType.STRING)
@@ -32,6 +42,12 @@ public class Questions {
     private int importance;
 
     @NotNull
-    @Column(name = "question_text", nullable = false)
-    private String questionText;
+    @Min(1)
+    @Max(5)
+    @Column(name = "user_score", nullable = false)
+    private int userScore;
+
+    @NotNull
+    @Column(name = "weighted_score", nullable = false)
+    private float weightedScore;
 }

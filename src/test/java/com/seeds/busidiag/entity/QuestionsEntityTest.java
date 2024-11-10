@@ -19,7 +19,7 @@ public class QuestionsEntityTest {
 
     @Test
     public void testValidQuestion() {
-        Questions question = Questions.builder()
+        Question question = Question.builder()
                 .category(QuestionCategory.cat1)
                 .importance(3)
                 .questionText("This is a valid question.")
@@ -29,7 +29,7 @@ public class QuestionsEntityTest {
 
     @Test
     public void testInvalidQuestion() {
-        Questions question = Questions.builder()
+        Question question = Question.builder()
                 .category(null)
                 .importance(6)
                 .questionText("")

@@ -24,7 +24,7 @@ public class ResponsesEntityTest {
     @Test
     public void testValidResponse() {
 
-        Users owner = Users.builder()
+        User owner = User.builder()
                 .email("owner@example.com")
                 .username("owner")
                 .password("password")
@@ -49,13 +49,13 @@ public class ResponsesEntityTest {
                 .recommendations("This is a recommendation.")
                 .build();
 
-        Questions question = Questions.builder()
+        Question question = Question.builder()
                 .category(QuestionCategory.cat1)
                 .importance(3)
                 .questionText("This is a valid question.")
                 .build();
 
-        Responses response = Responses.builder()
+        Response response = Response.builder()
                 .diagnosis(diagnosis)
                 .question(question)
                 .category(QuestionCategory.cat1)
@@ -68,7 +68,7 @@ public class ResponsesEntityTest {
 
     @Test
     public void testInvalidResponse() {
-        Responses response = Responses.builder()
+        Response response = Response.builder()
                 .diagnosis(null)
                 .question(null)
                 .category(null)

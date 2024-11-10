@@ -20,7 +20,7 @@ class UsersEntityTest {
 
     @Test
     public void testValidUsers() {
-        Users users = Users.builder()
+        User users = User.builder()
                 .email("example@example.com")
                 .username("test")
                 .password("testaaa")
@@ -31,7 +31,7 @@ class UsersEntityTest {
 
     @Test
     public void testInvalidUsers() {
-        Users users = Users.builder()
+        User users = User.builder()
                 .email("example@example.com")
                 .username("test")
                 .password("short")

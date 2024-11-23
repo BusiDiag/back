@@ -24,8 +24,14 @@ public class Business {
 
     @NotNull
     @JoinColumn(name = "owner_id", nullable = false)  // Foreign key to Users table
-    // Changed from User to int to match db
     private int ownerId;
+
+    @NotNull
+    @Column(name = "name", nullable = false)
+    private String name;
+
+    @Column(name = "description")
+    private String description;
 
     @NotNull
     @Enumerated(EnumType.STRING)
